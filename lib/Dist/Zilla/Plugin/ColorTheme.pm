@@ -11,7 +11,7 @@ use warnings;
 use Moose;
 
 #use PMVersions::Util qw(version_from_pmversions);
-use Require::Hook::DzilBuild;
+use Require::Hook::Source::DzilBuild;
 
 with (
     'Dist::Zilla::Role::CheckPackageDeclared',
@@ -33,7 +33,7 @@ sub _load_colortheme_modules {
 
     return $self->{_our_colortheme_modules} if $self->{_loaded_colortheme_modules}++;
 
-    local @INC = (Require::Hook::DzilBuild->new(zilla => $self->zilla, die=>1, debug=>1), @INC);
+    local @INC = (Require::Hook::Source::DzilBuild->new(zilla => $self->zilla, die=>1, debug=>1), @INC);
 
     my %res;
     for my $file (@{ $self->found_files }) {
@@ -61,7 +61,7 @@ sub _load_colorthemes_modules {
 
     return $self->{_our_colorthemes_modules} if $self->{_loaded_colorthemes_modules}++;
 
-    local @INC = (Require::Hook::DzilBuild->new(zilla => $self->zilla, die=>1, debug=>1), @INC);
+    local @INC = (Require::Hook::Source::DzilBuild->new(zilla => $self->zilla, die=>1, debug=>1), @INC);
 
     my %res;
     for my $file (@{ $self->found_files }) {

@@ -2,3 +2,4 @@ Dist-Zilla-Plugin-ColorTheme-*
 .build
 *~
 nytprof*
+.DS_Store
